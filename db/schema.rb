@@ -13,12 +13,15 @@
 ActiveRecord::Schema.define(version: 2) do
 
   create_table "books", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
+    t.string "author"
     t.string "genre"
     t.string "summary"
   end
 
   create_table "owners", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
     t.string "name"
   end
 

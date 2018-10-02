@@ -10,9 +10,8 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    @book = Book.create(params[:book])
-    @book.save
-    redirect to "books/#{@book.id}"
+    binding.pry
+    erb :'/books'
   end
 
   get '/books/:id/edit' do
