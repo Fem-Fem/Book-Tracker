@@ -5,8 +5,12 @@ class OwnersController < ApplicationController
   end
 
   get '/owners' do
-    @owners = Owner.all
-    erb :'/owners/index'
+    if self.is_logged_in?(session)
+      @owners = Owner.all
+      erb :'/owners/index'
+    else
+      erb :error
+    end
   end
 
   get '/owners/new' do
