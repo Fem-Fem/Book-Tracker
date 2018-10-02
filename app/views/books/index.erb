@@ -1,0 +1,9 @@
+<h1>Look at all of the books!</h1>
+
+<ul>
+  <%@books.each do |book|%>
+      <li><%=book.name%></li>
+  <%end%>
+</ul>
+
+<h1><a href="/logout">Log Out</a></h1>

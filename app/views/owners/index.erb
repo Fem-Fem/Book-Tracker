@@ -1,0 +1,11 @@
+<h1>Look at your Books!</h1>
+
+<ul>
+  <%@books.each do |book|%>
+    <%if book.owner_id == @owner.id%>
+      <li><%=book.name%></li>
+    <%end%>
+  <%end%>
+</ul>
+
+<h1><a href="/logout">Log Out</a></h1>
