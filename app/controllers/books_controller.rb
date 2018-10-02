@@ -10,7 +10,6 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    binding.pry
     @book = Book.create(params[:book])
     @book.save
     redirect to "books/#{@book.id}"
@@ -22,7 +21,6 @@ class BooksController < ApplicationController
   end
 
   get '/books/:id' do
-    binding.pry
     @book = Book.find(params[:id])
     erb :'/books/show'
   end
