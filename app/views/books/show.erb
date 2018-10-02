@@ -1,3 +1,26 @@
-<h1><%=@book.name%></h1>
-<h2><%=@book.genre%></h2>
-<h3><%=@book.summary%></h3>
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+
+    <%=binding.pry%>
+    <h1><%=@book.title%></h1>
+    <h1><%=@book.author%></h1>
+    <h1><%=@book.genre%></h1>
+    <h1><%=@book.summary%></h1>
+    <h1><%=Owner.find(@book.owner_id).username%></h1>
+
+    <br></br>
+    <h1><a href = '/books/:id/delete'>Delete This Book</a></h1>
+
+    <br></br>
+    <h1><a href = '/books/:id/edit'>Edit This Book</a></h1>
+
+
+    <div class = "container">
+      <h3><a href = "/logout">Logout</a></h3>
+    </div>
+
+  </body>
+</html>
