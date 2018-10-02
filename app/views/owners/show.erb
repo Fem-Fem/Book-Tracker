@@ -1,7 +1,10 @@
-<h1>Owners</h1>
+<h1>Look at your Books!</h1>
+
 <ul>
-  <%@owner.each do |owner|%>
-  <li><%=owner.name%></li>
+  <%@books.each do |book|%>
+    <%if book.owner_id == @owner.id%>
+      <li><%=book.title%></li>
+    <%end%>
   <%end%>
 </ul>
 

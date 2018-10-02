@@ -5,12 +5,12 @@ class OwnersController < ApplicationController
   end
 
   get '/owners' do
-    if self.is_logged_in?(session)
+    # if self.is_logged_in?(session)
       @owners = Owner.all
       erb :'/owners/index'
-    else
-      erb :error
-    end
+    # else
+    #   erb :error
+    # end
   end
 
   get '/owners/new' do
@@ -21,7 +21,7 @@ class OwnersController < ApplicationController
     binding.pry
     @owner = Owner.create(params[:owner])
     @owner.save
-    redirect to "owners/#{@owner.id}"
+    redirect to "/owners"
   end
 
   get '/owners/:id/edit' do
@@ -46,11 +46,11 @@ class OwnersController < ApplicationController
     session[:item] = params[:item]
   end
 
-  get 'signup' do
-    erb :'/signup'
+  get '/signup' do
+    erb :signup
   end
 
-  post 'signup' do
+  post '/signup' do
     if params["owner"] == "" || params["password"] == ""
       redirect to '/signup'
     else
@@ -60,11 +60,11 @@ class OwnersController < ApplicationController
     end
   end
 
-  get 'login' do
-    redirect "login"
+  get '/login' do
+    erb :login
   end
 
-  post 'login' do
+  post '/login' do
     if session[:user_id] == nil
        erb :login
      else
