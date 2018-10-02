@@ -3,7 +3,7 @@
 <ul>
   <%@books.each do |book|%>
     <%if book.owner_id == @owner.id%>
-      <li><%=book.name%></li>
+      <li><%=book.title%></li>
     <%end%>
   <%end%>
 </ul>
