@@ -65,13 +65,11 @@ class OwnersController < ApplicationController
   end
 
   post '/sessions/login' do
-    @current_owner = Owner.find_by(username: params["username"], password: params["password"])
-    if @current_owner
-      session[:user_id] = @current_owner[:id]
-      redirect "/books"
-    else
-      erb :error
-    end
+    if session[:user_id] == nil
+       erb :login
+     else
+       redirect to '/books'
+     end
   end
 
   get '/logout' do
