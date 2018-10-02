@@ -51,7 +51,7 @@ class OwnersController < ApplicationController
   end
 
   get '/sessions/login' do
-    redirect "/registrations/signup"
+    redirect "/sessions/login"
   end
 
   post '/sessions/login' do
