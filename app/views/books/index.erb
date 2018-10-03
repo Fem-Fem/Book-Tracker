@@ -2,7 +2,8 @@
 
 <ul>
   <%@books.each do |book|%>
-      <li><a href="/books/"+ '#{book.id}'><%=book.title%></a></li>
+      <%= binding.pry %>
+      <li><a href='/books/<%= book.id %>'><%=book.title%></a></li>
 
   <%end%>
 </ul>
