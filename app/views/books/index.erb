@@ -2,7 +2,8 @@
 
 <ul>
   <%@books.each do |book|%>
-      <li><%=book.title%></li>
+      <li><a href="/books/"+ '#{book.id}'><%=book.title%></a></li>
+
   <%end%>
 </ul>
 <h1><a href="/books/new">Add a book to your library!</a></h1>
