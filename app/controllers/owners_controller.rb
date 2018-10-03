@@ -60,8 +60,8 @@ class OwnersController < ApplicationController
     end
   end
 
-  get '/login' do
-    erb :login
+  get '/sessions/login' do
+    erb :'/owners/login'
   end
 
   post '/login' do
