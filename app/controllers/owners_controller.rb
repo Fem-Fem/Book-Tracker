@@ -53,7 +53,7 @@ class OwnersController < ApplicationController
   post '/registrations/signup' do
     binding.pry
     if params["owner"] == "" || params["password"] == ""
-      redirect to '/signup'
+      redirect to 'registrations/signup'
     else
       @owner = Owner.create(:username => params["username"],:password => params["password"])
       session[:user_id] = @owner.id
