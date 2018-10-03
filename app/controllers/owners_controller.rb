@@ -50,7 +50,7 @@ class OwnersController < ApplicationController
     erb :'/owners/signup'
   end
 
-  post '/signup' do
+  post '/registrations/signup' do
     binding.pry
     if params["owner"] == "" || params["password"] == ""
       redirect to '/signup'
