@@ -1,5 +1,5 @@
 class Owner < ActiveRecord::Base
   has_many :books
-  validates_presence_of :name, :username, :password
   has_secure_password
+  validates_presence_of :name, :username, :password
 end
