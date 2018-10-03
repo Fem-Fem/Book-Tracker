@@ -46,11 +46,12 @@ class OwnersController < ApplicationController
     session[:item] = params[:item]
   end
 
-  get '/signup' do
-    erb :signup
+  get '/registrations/signup' do
+    erb :'/owners/signup'
   end
 
   post '/signup' do
+    binding.pry
     if params["owner"] == "" || params["password"] == ""
       redirect to '/signup'
     else
@@ -65,6 +66,7 @@ class OwnersController < ApplicationController
   end
 
   post '/login' do
+    binding.pry
     if session[:user_id] == nil
        erb :login
      else
