@@ -66,12 +66,13 @@ class OwnersController < ApplicationController
   end
 
   post '/sessions/login' do
+    binding.pry
     owner = Owner.find_by(:username => params[:username])
     if owner && owner.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/books"
+      redirect to '/books'
     else
-      redirect "/login"
+      redirect to '/sessions/login'
     end
   end
 
