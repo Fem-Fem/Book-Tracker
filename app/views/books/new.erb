@@ -10,6 +10,14 @@
   <br></br>
   <label>Genre:</label>
   <input type="text" name="book[genre]" id="book_genre">
+  
+  <label for="genre">Select a Genre</label>
+  <select id='genre' name='genre' type='genre'>
+  <% @genres.each() do |genre| %>
+    <option value=""> <%= genre.name() %> </option>
+  <% end %>
+  </select>
+
   <br></br>
   <label>Summary:</label>
   <input type="text" name="book[summary]" id="book_summary">

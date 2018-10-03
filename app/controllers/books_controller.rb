@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   end
 
   get '/books/new' do
+    @genres = ["science", "philosophy", "fantasy", "mature", "science-fiction", "young adult"]
     erb :'/books/new'
   end
 

@@ -65,7 +65,7 @@ class OwnersController < ApplicationController
     erb :'/owners/login'
   end
 
-  post '/login' do
+  post '/sessions/login' do
     owner = Owner.find_by(:username => params[:username])
     if owner && owner.authenticate(params[:password])
       session[:user_id] = user.id
