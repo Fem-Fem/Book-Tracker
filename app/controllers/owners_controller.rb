@@ -24,24 +24,6 @@ class OwnersController < ApplicationController
     redirect to "/owners"
   end
 
-  get '/owners/:id/edit' do
-    if self.is_logged_in?(session)
-      @owners = Owner.all
-      erb :'/owners/index'
-    else
-      erb :error
-    end
-  end
-
-  get '/owners/:id' do
-    @owner = Owner.find(params[:id])
-    erb :'/owners/show/{params[:id]}'
-  end
-
-  post '/owners/:id' do
-
-  end
-
   post '/checkout' do
     session[:item] = params[:item]
   end
@@ -55,7 +37,7 @@ class OwnersController < ApplicationController
     if params["owner"] == "" || params["password"] == ""
       redirect to 'registrations/signup'
     else
-      @owner = Owner.new(:username => params[:username],:password_digest => params[:password],:name => params[:name])
+      @owner = Owner.create(:username => params[:username],:password_digest => params[:password],:name => params[:name])
       session[:user_id] = @owner.id
       redirect to '/books'
     end
@@ -72,12 +54,29 @@ class OwnersController < ApplicationController
       session[:user_id] = user.id
       redirect to '/books'
     else
-      redirect to '/sessions/login'
+      erb :'/owners/error'
     end
   end
 
   get '/logout' do
     session.clear
     redirect "/"
+  end
+
+  get '/owners/:id/edit' do
+    if self.is_logged_in?(session)
+      @owners = Owner.all
+      erb :'/owners/index'
+    else
+      erb :error
+    end
+  end
+
+  get '/owners/:id' do
+    @owner = Owner.find(params[:id])
+    erb :'/owners/show/{params[:id]}'
+  end
+
+  post '/owners/:id' do
   end
 end
