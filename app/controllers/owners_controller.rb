@@ -55,7 +55,7 @@ class OwnersController < ApplicationController
     if params["owner"] == "" || params["password"] == ""
       redirect to 'registrations/signup'
     else
-      @owner = Owner.create(:username => params["username"],:password => params["password"])
+      @owner = Owner.create(:username => params["username"],:password => params["password"],:name => params["name"])
       session[:user_id] = @owner.id
       redirect to '/books'
     end
