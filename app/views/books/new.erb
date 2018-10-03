@@ -9,12 +9,9 @@
   <input type="text" name="book[author]" id="book_author">
   <br></br>
   <label>Genre:</label>
-  <input type="text" name="book[genre]" id="book_genre">
-  
-  <label for="genre">Select a Genre</label>
-  <select id='genre' name='genre' type='genre'>
-  <% @genres.each() do |genre| %>
-    <option value=""> <%= genre.name() %> </option>
+  <select id='genre_list' name='genre_list'>
+  <% @genres.each do |genre| %>
+    <option type="text" name='book[genre]' id="book_genre"> <%= genre %>
   <% end %>
   </select>
 
