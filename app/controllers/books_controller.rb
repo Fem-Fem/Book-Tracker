@@ -15,13 +15,16 @@ class BooksController < ApplicationController
     if @book.save
       redirect '/books'
     else
-      @book.errors.messages
-      #sinatra flash
+      binding.pry
+      flash[@book.errors.messages]
+      redirect '/books/new'
     end
   end
 
   get '/books/:id/edit' do
-    @owner = Owner.find(params[:id])
+
+  #  @owner = Owner.find(params[:id])
+  # get current user, make sure user id == book user id
     erb :'/owners/edit/#{params[:id]}'
   end
 
