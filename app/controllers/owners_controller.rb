@@ -5,12 +5,12 @@ class OwnersController < ApplicationController
   end
 
   get '/owners' do
-    # if self.is_logged_in?(session)
+    if self.is_logged_in?(session)
       @owners = Owner.all
       erb :'/owners/index'
-    # else
-    #   erb :error
-    # end
+    else
+      erb :error
+    end
   end
 
   get '/owners/new' do
@@ -33,13 +33,14 @@ class OwnersController < ApplicationController
   end
 
   post '/registrations/signup' do
+    @owner = Owner.new(:username => params[:username],:password_digest => params[:password],:name => params[:name])
     binding.pry
-    if params["owner"] == "" || params["password"] == ""
-      redirect to 'registrations/signup'
-    else
-      @owner = Owner.create(:username => params[:username],:password_digest => params[:password],:name => params[:name])
+    if @owner.save
       session[:user_id] = @owner.id
       redirect to '/books'
+    else
+      @error = @book.errors.full_messages.to_sentence
+      erb :'/registrations/signup'
     end
   end
 
