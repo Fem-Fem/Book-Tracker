@@ -11,10 +11,13 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    binding.pry
-    @book = Book.create(params[:book])
-    @book.save
-    redirect '/books'
+    @book = Book.new(params[:book])
+    if @book.save
+      redirect '/books'
+    else
+      @book.errors.messages
+      #sinatra flash
+    end
   end
 
   get '/books/:id/edit' do
