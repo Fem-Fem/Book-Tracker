@@ -15,9 +15,9 @@ class BooksController < ApplicationController
     if @book.save
       redirect '/books'
     else
-      binding.pry
-      flash[@book.errors.messages]
-      redirect '/books/new'
+      @error = @book.errors.full_messages.to_sentence
+      @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
+      erb :'/books/new'
     end
   end
 
