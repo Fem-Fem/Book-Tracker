@@ -15,8 +15,16 @@ class BackpacksController < ApplicationController
       redirect_to '/backpacks/index'
     else
       @error = @backpack.errors.full_messages.to_sentence
-      erb :'/backpack/new'
+      erb :'/backpacks/new'
     end
+  end
+
+  get '/backpacks/:id' do
+    @backpacks = Backpack.find(params[:id])
+    erb :'/backpacks/show'
+  end
+
+  post '/backpacks/:id' do
   end
 
 end

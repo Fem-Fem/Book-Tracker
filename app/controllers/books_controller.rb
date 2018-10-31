@@ -57,8 +57,5 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     erb :'/books/show'
   end
-
-  post '/books/:id' do
-  end
-
+  
 end
