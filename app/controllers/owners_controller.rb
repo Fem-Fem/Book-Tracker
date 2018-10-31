@@ -78,6 +78,4 @@ class OwnersController < ApplicationController
     erb :'/owners/show/{params[:id]}'
   end
 
-  post '/owners/:id' do
-  end
 end
