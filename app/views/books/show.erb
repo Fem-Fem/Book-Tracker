@@ -21,9 +21,7 @@
     </h3>
 
     <h3>
-      <% if current_user.id == @book.owner_id %>
-        <a href = '/owners/<%=@book.owner_id%>'>View Your Books!</a>
-      <% else %>
+      <% if current_user.id != @book.owner_id %>
         <a href = "/owners/<%=@book.owner_id%>">View More Books by this Person!</a>
       <% end %>
     </h3>
