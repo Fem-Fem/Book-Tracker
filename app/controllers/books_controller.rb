@@ -38,12 +38,15 @@ class BooksController < ApplicationController
     end
   end
 
-  delete '/books/:id/delete' do
+  get '/books/:id/delete' do
     binding.pry
-    if session[:user_id] != @book.user_id.to_i
-      redirect to '/books'
+    @book = Book.find(params[:id])
+    if session[:owner_id] == nil
+      redirect to '/login'
+    elsif session[:owner_id] != @book.owner_id
+      redirect '/books'
     else
-      Book.delete(params["id"])
+      Book.delete(params[:id])
       redirect to '/books'
     end
   end
