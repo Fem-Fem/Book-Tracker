@@ -23,8 +23,15 @@ class BackpacksController < ApplicationController
     @backpacks = Backpack.find(params[:id])
     erb :'/backpacks/show'
   end
-
-  post '/backpacks/:id' do
+  
+  delete '/backpacks/:id/delete' do
+    ### @backpacks = Backpack.find(params[:id])
+    if session[:user_id] != @backpacks.user_id.to_i
+      redirect to '/backpacks'
+    else
+      Backpack.delete(params["id"])
+      redirect to '/backpacks'
+    end
   end
 
 end
