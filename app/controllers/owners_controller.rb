@@ -28,26 +28,26 @@ class OwnersController < ApplicationController
     session[:item] = params[:item]
   end
 
-  get '/registrations/signup' do
-    erb :'/owners/signup'
+  get '/signup' do
+    erb :'/users/signup'
   end
 
-  post '/registrations/signup' do
+  post '/signup' do
     @owner = Owner.new(:username => params[:username],:password_digest => params[:password],:name => params[:name])
     if @owner.save
       session[:user_id] = @owner.id
       redirect to '/books'
     else
       @error = @owner.errors.full_messages.to_sentence
-      erb :'/registrations/signup'
+      erb :'/users/signup'
     end
   end
 
-  get '/sessions/login' do
-    erb :'/owners/login'
+  get '/login' do
+    erb :'/users/login'
   end
 
-  post '/sessions/login' do
+  post '/login' do
     binding.pry
     owner = Owner.find_by(:username => params[:username])
     if owner && owner.authenticate(params[:password])

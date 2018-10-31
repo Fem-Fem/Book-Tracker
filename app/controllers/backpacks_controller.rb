@@ -28,7 +28,7 @@ class BackpacksController < ApplicationController
   get '/backpacks/:id/edit' do
     @backpacks = Backpack.find(params["id"])
     if session[:user_id] == nil
-      redirect to '/owners/login'
+      redirect to '/users/login'
     elsif session[:user_id] != @backpack.user_id
       erb :index
     else

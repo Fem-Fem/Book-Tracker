@@ -25,7 +25,7 @@ class BooksController < ApplicationController
     binding.pry
     @book = Book.find(params["id"])
     if session[:user_id] == nil
-      redirect to '/owners/login'
+      redirect to '/users/login'
     elsif session[:user_id] != @book.user_id
       erb :index
     else
