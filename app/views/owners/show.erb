@@ -1,10 +1,8 @@
-<h1>Look at your Books!</h1>
+<h1>Look at <%=@owner.name%>'s Books!</h1>
 
 <ul>
-  <%@books.each do |book|%>
-    <%if book.owner_id == @owner.id%>
-      <li><%=book.title%></li>
-    <%end%>
+  <%@owner.books.each do |book|%>
+      <li><a href='/books/<%= book.id %>'><%=book.title%></a></li>
   <%end%>
 </ul>
 

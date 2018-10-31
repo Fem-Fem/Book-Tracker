@@ -68,13 +68,13 @@ class OwnersController < ApplicationController
     if session[:user_id] == nil
       erb :'/owners/error'
     else
-      erb :edit
+      erb :'/owners/edit'
     end
   end
 
   get '/owners/:id' do
     @owner = Owner.find(params[:id])
-    erb :'/owners/:id'
+    erb :'/owners/show'
   end
 
 end
