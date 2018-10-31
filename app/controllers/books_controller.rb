@@ -43,19 +43,9 @@ class BooksController < ApplicationController
     end
   end
 
-  delete '/tweet/:id/delete' do
-    @tweet = Tweet.find(params["captures"][0].to_i)
-    if session[:user_id] == params["id"].to_i
-      Tweet.delete(params["id"])
-      redirect to '/tweets'
-    else
-      redirect to '/tweets'
-    end
-  end
-
   get '/books/:id' do
     @book = Book.find(params[:id])
     erb :'/books/show'
   end
-  
+
 end
