@@ -33,11 +33,12 @@ class OwnersController < ApplicationController
 
   post '/signup' do
     @owner = Owner.new(:username => params[:username],:password => params[:password],:name => params[:name])
+    binding.pry
     if @owner.save
       session[:owner_id] = @owner.id
       redirect to '/books'
     else
-      @error = @owner.errors.full_messages.to_sentence
+      @errors = @owner.errors.full_messages.to_sentence
       erb :'/users/signup'
     end
   end
