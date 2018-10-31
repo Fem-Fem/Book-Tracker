@@ -33,6 +33,7 @@ class BooksController < ApplicationController
 
   get '/books/:id/edit' do
     # raise params.inspect
+    @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
     @book = Book.find(params[:id])
     if session[:owner_id] == nil
       redirect to '/login'

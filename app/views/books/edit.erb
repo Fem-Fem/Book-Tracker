@@ -9,7 +9,11 @@
   <input type="text" name="book[author]" id="book_author" value="<%= @book.author%>">
   <br></br>
   <label>Genre:</label>
-  <input type="text" name="book[genre]" id="book_genre" value="Fix this">
+  <select id='genre_list' type="text" name='book[genre]' id="book_genre" value="<%=@book.genre%>">
+  <% @genres.each do |genre| %>
+    <option type="text" name='book[genre]' id="book_genre"> <%= genre %>
+  <% end %>
+  </select>
   <br></br>
   <label>Summary:</label>
   <input type="text" name="book[summary]" id="book_summary" value="<%= @book.summary%>">
