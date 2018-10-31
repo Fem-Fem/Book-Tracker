@@ -34,7 +34,6 @@ class BooksController < ApplicationController
   end
 
   delete '/books/:id/delete' do
-    binding.pry
     if session[:user_id] != @book.user_id.to_i
       redirect to '/books'
     else
