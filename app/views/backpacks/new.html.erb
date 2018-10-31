@@ -1,0 +1,10 @@
+<h1>Create a New Backpack!</h1>
+<h4><%= @error %></h4>
+
+<form action="/backpack" method="POST">
+  <br></br>
+  <label>Title:</label>
+  <input type="text" name="backpack[name]" id="backpack_name">
+  <br></br>
+  <input type="submit" value="Create Backpack">
+</form>
