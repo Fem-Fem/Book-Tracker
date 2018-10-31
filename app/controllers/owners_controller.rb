@@ -5,7 +5,6 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/index' do
-    binding.pry
     if is_logged_in?
       @owners = Owner.all
       erb :'/owners/index'
