@@ -39,7 +39,7 @@ class OwnersController < ApplicationController
       session[:user_id] = @owner.id
       redirect to '/books'
     else
-      @error = @book.errors.full_messages.to_sentence
+      @error = @owner.errors.full_messages.to_sentence
       erb :'/registrations/signup'
     end
   end
