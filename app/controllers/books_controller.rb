@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
   get '/books' do
+    is_logged_in?
     @books = Book.all
     erb :'/books/index'
   end
@@ -38,6 +39,7 @@ class BooksController < ApplicationController
   end
 
   delete '/books/:id/delete' do
+    binding.pry
     if session[:user_id] != @book.user_id.to_i
       redirect to '/books'
     else
@@ -47,6 +49,7 @@ class BooksController < ApplicationController
   end
 
   get '/books/:id' do
+    #redirect_if_not_logged_in
     @book = Book.find(params[:id])
     erb :'/books/show'
   end

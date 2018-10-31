@@ -52,7 +52,7 @@ class OwnersController < ApplicationController
     binding.pry
     if owner && owner.authenticate(params[:password])
       session[:owner_id] = owner.id
-      redirect to '/backpacks'
+      redirect to '/books'
     else
       erb :'/owners/error'
     end
