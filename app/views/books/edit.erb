@@ -3,16 +3,16 @@
 <form action="/books" method="POST">
   <br></br>
   <label>Title:</label>
-  <input type="text" name="book[title]" id="book_title">
+  <input type="text" name="book[title]" id="book_title" value="<%= @book.title%>">
   <br></br>
   <label>Author:</label>
-  <input type="text" name="book[author]" id="book_author">
+  <input type="text" name="book[author]" id="book_author" value="<%= @book.author%>">
   <br></br>
   <label>Genre:</label>
-  <input type="text" name="book[genre]" id="book_genre">
+  <input type="text" name="book[genre]" id="book_genre" value="Fix this">
   <br></br>
   <label>Summary:</label>
-  <input type="text" name="book[summary]" id="book_summary">
+  <input type="text" name="book[summary]" id="book_summary" value="<%= @book.summary%>">
   <br></br>
-  <input type="submit" value="Create Book">
+  <input type="submit" value="Update Book">
 </form>

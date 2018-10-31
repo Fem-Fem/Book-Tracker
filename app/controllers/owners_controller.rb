@@ -18,7 +18,6 @@ class OwnersController < ApplicationController
   end
 
   post '/owners' do
-    binding.pry
     @owner = Owner.create(params[:owner])
     @owner.save
     redirect to "/owners"
@@ -33,9 +32,9 @@ class OwnersController < ApplicationController
   end
 
   post '/signup' do
-    @owner = Owner.new(:username => params[:username],:password_digest => params[:password],:name => params[:name])
+    @owner = Owner.new(:username => params[:username],:password => params[:password],:name => params[:name])
     if @owner.save
-      session[:user_id] = @owner.id
+      session[:owner_id] = @owner.id
       redirect to '/books'
     else
       @error = @owner.errors.full_messages.to_sentence
@@ -48,10 +47,10 @@ class OwnersController < ApplicationController
   end
 
   post '/login' do
-    binding.pry
     owner = Owner.find_by(:username => params[:username])
+    binding.pry
     if owner && owner.authenticate(params[:password])
-      session[:user_id] = user.id
+      session[:owner_id] = owner.id
       redirect to '/backpacks'
     else
       erb :'/owners/error'
@@ -64,7 +63,6 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id/edit' do
-    binding.pry
     if session[:user_id] == nil
       erb :'/owners/error'
     else
@@ -73,7 +71,6 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id' do
-    binding.pry
     @owner = Owner.find(params[:id])
     erb :'/owners/show/{params[:id]}'
   end
