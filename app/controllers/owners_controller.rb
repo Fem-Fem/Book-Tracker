@@ -4,8 +4,9 @@ class OwnersController < ApplicationController
     erb :'/account'
   end
 
-  get '/owners' do
-    if self.is_logged_in?(session)
+  get '/owners/index' do
+    binding.pry
+    if is_logged_in?
       @owners = Owner.all
       erb :'/owners/index'
     else
@@ -73,7 +74,7 @@ class OwnersController < ApplicationController
 
   get '/owners/:id' do
     @owner = Owner.find(params[:id])
-    erb :'/owners/show/{params[:id]}'
+    erb :'/owners/:id'
   end
 
 end

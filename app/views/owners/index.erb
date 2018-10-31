@@ -1,7 +1,16 @@
 <h1>Owners</h1>
 <ul>
   <%@owners.each do |owner|%>
-  <li><%=owner.name%></li>
+  <li>
+    <a href='/owners/<%= owner.id %>'><%=owner.name%></a>
+    <ul>
+      <%owner.books.each do |book| %>
+      <li>
+        <a href='/books/<%= book.id %>'><%=book.title%></a></li>
+      </li>
+      <% end%>
+    </ul>
+  </li>
   <%end%>
 </ul>
 
