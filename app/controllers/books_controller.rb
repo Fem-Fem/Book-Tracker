@@ -44,18 +44,14 @@ class BooksController < ApplicationController
   end
 
   delete '/tweet/:id/delete' do
-  @tweet = Tweet.find(params["captures"][0].to_i)
-  if session[:user_id] == params["id"].to_i
-    Tweet.delete(params["id"])
-    redirect to '/tweets'
-  else
-    redirect to '/tweets'
+    @tweet = Tweet.find(params["captures"][0].to_i)
+    if session[:user_id] == params["id"].to_i
+      Tweet.delete(params["id"])
+      redirect to '/tweets'
+    else
+      redirect to '/tweets'
+    end
   end
-end
-
-
-  #  @owner = Owner.find(params[:id])
-  # get current user, make sure user id == book user id
 
   get '/books/:id' do
     @book = Book.find(params[:id])
