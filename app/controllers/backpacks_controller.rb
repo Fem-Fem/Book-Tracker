@@ -1,7 +1,8 @@
 class BackpacksController < ApplicationController
 
   get '/backpacks' do
-    @books = Book.all
+    binding.pry
+    @backpacks = Backpack.all
     erb :'/backpacks/index'
   end
 

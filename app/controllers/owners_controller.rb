@@ -52,7 +52,7 @@ class OwnersController < ApplicationController
     owner = Owner.find_by(:username => params[:username])
     if owner && owner.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect to '/books'
+      redirect to '/backpacks'
     else
       erb :'/owners/error'
     end
