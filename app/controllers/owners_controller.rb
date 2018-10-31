@@ -34,7 +34,6 @@ class OwnersController < ApplicationController
 
   post '/registrations/signup' do
     @owner = Owner.new(:username => params[:username],:password_digest => params[:password],:name => params[:name])
-    binding.pry
     if @owner.save
       session[:user_id] = @owner.id
       redirect to '/books'
@@ -65,15 +64,16 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id/edit' do
-    if self.is_logged_in?(session)
-      @owners = Owner.all
-      erb :'/owners/index'
+    binding.pry
+    if session[:user_id] == nil
+      erb :'/owners/error'
     else
-      erb :error
+      erb :edit
     end
   end
 
   get '/owners/:id' do
+    binding.pry
     @owner = Owner.find(params[:id])
     erb :'/owners/show/{params[:id]}'
   end

@@ -1,4 +1,4 @@
-class Helpers
+class Helpers < BooksController
 
   def self.current_user(session)
     return Owner.find(session[:user_id])
