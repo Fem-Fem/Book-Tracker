@@ -29,7 +29,11 @@ class BooksController < ApplicationController
     erb :'/books/index'
   end
 
-
+  get '/books/:id' do
+    #redirect_if_not_logged_in
+    @book = Book.find(params[:id])
+    erb :'/books/show'
+  end
 
   get '/books/:id/edit' do
     # raise params.inspect
@@ -40,8 +44,22 @@ class BooksController < ApplicationController
     elsif session[:owner_id] != @book.owner_id
       redirect '/books'
     else
+      binding.pry
       erb :'/books/edit'
     end
+  end
+
+  patch '/books/:id' do
+    # raise params.inspect
+    @book = Book.find(params[:id])
+    binding.pry
+    @book.title = params[:title]
+    @book.author = params[:author]
+    @book.genre = params[:genre]
+    @book.summary = params[:summary]
+    @book.save
+    redirect to "/books/#{@book.id}"
+    binding.pry
   end
 
   get '/books/:id/delete' do
@@ -56,10 +74,6 @@ class BooksController < ApplicationController
     end
   end
 
-  get '/books/:id' do
-    #redirect_if_not_logged_in
-    @book = Book.find(params[:id])
-    erb :'/books/show'
-  end
+
 
 end
