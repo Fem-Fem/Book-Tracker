@@ -44,7 +44,6 @@ class BooksController < ApplicationController
     elsif session[:owner_id] != @book.owner_id
       redirect '/books'
     else
-      binding.pry
       erb :'/books/edit'
     end
   end
@@ -52,14 +51,12 @@ class BooksController < ApplicationController
   patch '/books/:id' do
     # raise params.inspect
     @book = Book.find(params[:id])
-    binding.pry
-    @book.title = params[:title]
-    @book.author = params[:author]
-    @book.genre = params[:genre]
-    @book.summary = params[:summary]
+    @book.title = params[:book][:title]
+    @book.author = params[:book][:author]
+    @book.genre = params[:book][:genre]
+    @book.summary = params[:book][:summary]
     @book.save
     redirect to "/books/#{@book.id}"
-    binding.pry
   end
 
   get '/books/:id/delete' do
