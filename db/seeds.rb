@@ -3,7 +3,6 @@ harry_potter = Book.create(title: "Harry Potter", author: "JK Rowling", genre: "
 binding.pry
 harry_potter.owner_id = femi.id
 binding.pry
-
 harry_potter.save
 percy_jackson = Book.create(title: "Percy Jackson", author: "Rick Riordan", genre: "Fantasy", summary: "Greek Stuff")
 percy_jackson.owner_id = femi.id
