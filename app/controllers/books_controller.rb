@@ -7,6 +7,8 @@ class BooksController < ApplicationController
   end
 
   get '/books/new' do
+    binding.pry
+    redirect_to_login_or_signup_if_not_logged_in
     @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
     erb :'/books/new'
   end

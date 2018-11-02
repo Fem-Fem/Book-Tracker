@@ -25,6 +25,12 @@ class ApplicationController < Sinatra::Base
         return false
       end
     end
+
+    def redirect_to_login_or_signup_if_not_logged_in
+      if !is_logged_in?
+        redirect to '/owners/error'
+      end
+    end
   end
 
 end

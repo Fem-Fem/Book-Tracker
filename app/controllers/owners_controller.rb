@@ -4,12 +4,16 @@ class OwnersController < ApplicationController
     erb :'/account'
   end
 
+  get '/owners/error' do
+    erb :'owners/error'
+  end
+
   get '/owners/index' do
     if is_logged_in?
       @owners = Owner.all
       erb :'/owners/index'
     else
-      erb :error
+      erb :'owners/error'
     end
   end
 
