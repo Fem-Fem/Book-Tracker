@@ -47,7 +47,6 @@ class BooksController < ApplicationController
   end
 
   patch '/books/:id' do
-    # raise params.inspect
     @book = Book.find(params[:id])
     @book.title = params[:book][:title]
     @book.author = params[:book][:author]
@@ -60,7 +59,6 @@ class BooksController < ApplicationController
   get '/books/:id/delete' do
     redirect_to_login_or_signup_if_not_logged_in
     @book = Book.find(params[:id])
-    binding.pry
     if current_user.id == @book.owner_id
       Book.delete(params[:id])
     else
