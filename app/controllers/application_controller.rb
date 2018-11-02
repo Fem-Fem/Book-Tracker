@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def genres
-      @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
+      @genres = ["Fantasy", "Fiction", "History", "Non-fiction", "Romance", "Science", "Science-fiction", "Philosophy", "Young Adult"]
     end
   end
 

@@ -6,10 +6,10 @@ percy_jackson = Book.create(title: "Percy Jackson", author: "Rick Riordan", genr
 percy_jackson.owner_id = femi.id
 percy_jackson.save
 
-remi = Owner.create(username: "Obaremi", password: "password", name: "remi")
-harry_potter_2 = Book.create(title: "Harry Potter_2", author: "JK Rowling", genre: "Fantasy", summary: "Magic Stuff")
-percy_jackson_2 = Book.create(title: "Percy Jackson_2", author: "Rick Riordan", genre: "Fantasy", summary: "Greek Stuff")
-harry_potter_2.owner_id = remi.id
-percy_jackson_2.owner_id = remi.id
-harry_potter_2.save
-percy_jackson_2.save
+engst = Owner.create(username: "Clara Engst", password: "password", name: "engst")
+white_teeth = Book.create(title: "White Teeth", author: "Zadie Smith", genre: "Fiction", summary: "Random Chance")
+middlesex = Book.create(title: "Middlesex", author: "Jeffrey Eugenides", genre: "Fantasy", summary: "Generational Swag")
+white_teeth.owner_id = engst.id
+middlesex.owner_id = engst.id
+white_teeth.save
+middlesex.save
