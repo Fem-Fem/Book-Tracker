@@ -29,17 +29,12 @@ class OwnersController < ApplicationController
     redirect to "/owners"
   end
 
-  post '/checkout' do
-    session[:item] = params[:item]
-  end
-
   get '/signup' do
     erb :'/users/signup'
   end
 
   post '/signup' do
     @owner = Owner.new(:username => params[:username],:password => params[:password],:name => params[:name])
-    binding.pry
     if @owner.save
       session[:owner_id] = @owner.id
       redirect to '/books'
