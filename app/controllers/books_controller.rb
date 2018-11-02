@@ -13,8 +13,6 @@ class BooksController < ApplicationController
 
   post '/books' do
     @book = current_user.books.build(params[:book])
-    # @book = Book.new(params[:book])
-    # @book.owner_id = session[:owner_id]
     if @book.save
       redirect '/books'
     else
@@ -36,7 +34,6 @@ class BooksController < ApplicationController
   end
 
   get '/books/:id/edit' do
-    # raise params.inspect
     @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
     @book = Book.find(params[:id])
     if session[:owner_id] == nil
@@ -70,7 +67,5 @@ class BooksController < ApplicationController
       redirect to '/books'
     end
   end
-
-
 
 end
