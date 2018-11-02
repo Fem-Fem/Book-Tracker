@@ -9,6 +9,7 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/index' do
+    redirect_to_login_or_signup_if_not_logged_in
     if is_logged_in?
       @owners = Owner.all
       erb :'/owners/index'
@@ -18,6 +19,7 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/new' do
+    redirect_to_login_or_signup_if_not_logged_in
     erb :'/owners/new'
   end
 
@@ -68,6 +70,7 @@ class OwnersController < ApplicationController
   end
 
   get '/owners/:id' do
+    redirect_to_login_or_signup_if_not_logged_in
     @owner = Owner.find(params[:id])
     erb :'/owners/show'
   end

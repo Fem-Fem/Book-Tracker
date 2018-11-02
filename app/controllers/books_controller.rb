@@ -1,13 +1,12 @@
 class BooksController < ApplicationController
 
   get '/books' do
-    is_logged_in?
+    redirect_to_login_or_signup_if_not_logged_in
     @books = Book.all
     erb :'/books/index'
   end
 
   get '/books/new' do
-    binding.pry
     redirect_to_login_or_signup_if_not_logged_in
     @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
     erb :'/books/new'
@@ -25,12 +24,13 @@ class BooksController < ApplicationController
   end
 
   get '/books/index' do
+    redirect_to_login_or_signup_if_not_logged_in
     @books = Book.all
     erb :'/books/index'
   end
 
   get '/books/:id' do
-    #redirect_if_not_logged_in
+    redirect_to_login_or_signup_if_not_logged_in
     @book = Book.find(params[:id])
     erb :'/books/show'
   end
@@ -59,6 +59,7 @@ class BooksController < ApplicationController
   end
 
   get '/books/:id/delete' do
+    redirect_to_login_or_signup_if_not_logged_in
     @book = Book.find(params[:id])
     if session[:owner_id] == nil
       redirect to '/login'
