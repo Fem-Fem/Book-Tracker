@@ -1,4 +1,9 @@
-<h1><%= "Look at " + @owner.name + "'s Books!"%></h1>
+<%= binding.pry%>
+<%if @owner.id == current_user.id%>
+  <h1><%= "Look at your books!"%></h1>
+<%else%>
+  <h1><%= "Look at " + @owner.name + "'s books!"%></h1>
+<% end%>
 
 <ul>
   <%@owner.books.each do |book|%>
