@@ -38,9 +38,9 @@ class BooksController < ApplicationController
   get '/books/:id/edit' do
     @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
     @book = Book.find(params[:id])
-    if session[:owner_id] == nil
+    if current_user.id == nil
       redirect to '/login'
-    elsif session[:owner_id] != @book.owner_id
+    elsif current_user.id != @book.owner_id
       redirect '/books'
     else
       erb :'/books/edit'
@@ -62,7 +62,7 @@ class BooksController < ApplicationController
     redirect_to_login_or_signup_if_not_logged_in
     @book = Book.find(params[:id])
     binding.pry
-    if session[:owner_id] != @book.owner_id
+    if current_user.id != @book.owner_id
       redirect '/books'
     else
       Book.delete(params[:id])
