@@ -10,11 +10,8 @@ class OwnersController < ApplicationController
 
   get '/owners/index' do
     redirect_to_login_or_signup_if_not_logged_in
-    if is_logged_in?
-      @owners = Owner.all
-      erb :'/owners/index'
-    else
-      erb :'owners/error'
+    @owners = Owner.all
+    erb :'/owners/index'
     end
   end
 
@@ -50,7 +47,6 @@ class OwnersController < ApplicationController
 
   post '/login' do
     owner = Owner.find_by(:username => params[:username])
-    binding.pry
     if owner && owner.authenticate(params[:password])
       session[:owner_id] = owner.id
       redirect to '/books'
