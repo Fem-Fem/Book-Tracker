@@ -31,6 +31,10 @@ class ApplicationController < Sinatra::Base
         redirect to '/owners/error'
       end
     end
+
+    def genres
+      @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
+    end
   end
 
 end

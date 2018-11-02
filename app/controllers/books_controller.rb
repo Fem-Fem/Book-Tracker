@@ -8,7 +8,6 @@ class BooksController < ApplicationController
 
   get '/books/new' do
     redirect_to_login_or_signup_if_not_logged_in
-    @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
     erb :'/books/new'
   end
 
@@ -18,7 +17,7 @@ class BooksController < ApplicationController
       redirect '/books'
     else
       @error = @book.errors.full_messages.to_sentence
-      @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
+      genres
       erb :'/books/new'
     end
   end
@@ -37,7 +36,7 @@ class BooksController < ApplicationController
 
   get '/books/:id/edit' do
     redirect_to_login_or_signup_if_not_logged_in
-    @genres = ["Science", "Philosophy", "Fantasy", "Science-fiction", "Romance", "Young Adult"]
+    genres
     @book = Book.find(params[:id])
     if current_user.id != @book.owner_id
       redirect '/books'
