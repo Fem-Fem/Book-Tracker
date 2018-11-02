@@ -63,14 +63,6 @@ class OwnersController < ApplicationController
     redirect "/"
   end
 
-  get '/owners/:id/edit' do
-    if session[:user_id] == nil
-      erb :'/owners/error'
-    else
-      erb :'/owners/edit'
-    end
-  end
-
   get '/owners/:id' do
     @owner = Owner.find(params[:id])
     erb :'/owners/show'
