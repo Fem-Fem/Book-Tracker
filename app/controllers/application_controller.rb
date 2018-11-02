@@ -9,12 +9,6 @@ class ApplicationController < Sinatra::Base
 
 
   helpers do
-    # def redirect_if_not_logged_in
-    #   binding.pry
-    #   if !is_logged_in?
-    #     redirect_to :'/owners/error'
-    #   end
-    # end
 
     def current_user
       if session[:owner_id]
