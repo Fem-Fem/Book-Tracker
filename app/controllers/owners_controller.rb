@@ -12,7 +12,6 @@ class OwnersController < ApplicationController
     redirect_to_login_or_signup_if_not_logged_in
     @owners = Owner.all
     erb :'/owners/index'
-    end
   end
 
   get '/owners/new' do

@@ -61,9 +61,8 @@ class BooksController < ApplicationController
   get '/books/:id/delete' do
     redirect_to_login_or_signup_if_not_logged_in
     @book = Book.find(params[:id])
-    if session[:owner_id] == nil
-      redirect to '/login'
-    elsif session[:owner_id] != @book.owner_id
+    binding.pry
+    if session[:owner_id] != @book.owner_id
       redirect '/books'
     else
       Book.delete(params[:id])
