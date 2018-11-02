@@ -8,6 +8,7 @@ class BooksController < ApplicationController
 
   get '/books/new' do
     redirect_to_login_or_signup_if_not_logged_in
+    genres
     erb :'/books/new'
   end
 
