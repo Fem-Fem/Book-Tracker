@@ -1,4 +1,11 @@
 <h3>Log In!</h3>
+
+<ul>
+  <% if @errors != nil%>
+    <p>Errors: <%=@errors%><p>
+  <%end%>
+</ul>
+
 <form class="" action="/login" method="post">
   <p>Username: <input type="text" name="username" value=""></p>
   <p>Password: <input type="password" name="password" value=""></p>
