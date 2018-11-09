@@ -8,7 +8,7 @@ class OwnersController < ApplicationController
     erb :'owners/error'
   end
 
-  get '/owners/index' do
+  get '/owners' do
     redirect_to_login_or_signup_if_not_logged_in
     @owners = Owner.all
     erb :'/owners/index'

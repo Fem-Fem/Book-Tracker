@@ -23,12 +23,6 @@ class BooksController < ApplicationController
     end
   end
 
-  get '/books/index' do
-    redirect_to_login_or_signup_if_not_logged_in
-    @books = Book.all
-    erb :'/books/index'
-  end
-
   get '/books/:id' do
     redirect_to_login_or_signup_if_not_logged_in
     @book = Book.find(params[:id])
