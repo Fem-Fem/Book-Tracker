@@ -4,16 +4,12 @@
 
 This app tracks books between friends! You can upload, view, edit, and delete all of your books after you create an account!
 
-## Requirements
+## Install Instructions
 
-1. Build an MVC Sinatra Application.
-2. Use ActiveRecord with Sinatra.
-3. Use Multiple Models.
-4. Use at least one `has_many` relationship on a User model and one `belongs_to` relationship on another model
-5. Must have user accounts. The user that created a given piece of content should be the only person who can modify that content
-6. Must have the abilty to create, read, update and destroy any instance of the resource that belongs to a user.
-7. Ensure that any instance of the resource that belongs to a user can be edited or deleted only by that user.
-8. You should also have validations for user input to ensure that bad data isn't added to the database. The fields in your signup form should be required and the user attribute that is used to login a user should be a unique value in the DB before creating the user.
+1. Get repo
+2. Clone to your local environment
+3. Run bundle install
+4. Run shotgun and enjoy!
 
 ### Example Domains
 
