@@ -52,8 +52,15 @@ class BooksController < ApplicationController
     @book.author = params[:book][:author]
     @book.genre = params[:book][:genre]
     @book.summary = params[:book][:summary]
-    @book.save
-    redirect to "/books/#{@book.id}"
+    binding.pry
+    if @book.valid?
+      @book.save
+      redirect to "/books/#{@book.id}"
+    else
+      genres
+      @error = @book.errors.full_messages.to_sentence
+      erb :"/books/edit"
+    end
   end
 
   get '/books/:id/delete' do
