@@ -51,7 +51,7 @@ class OwnersController < ApplicationController
       session[:owner_id] = owner.id
       redirect to '/books'
     else
-      @errors =  "Invalid combination"
+      @errors =  "Invalid combination!"
       erb :'/users/login'
     end
   end
