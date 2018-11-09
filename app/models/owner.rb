@@ -4,6 +4,4 @@ class Owner < ActiveRecord::Base
   validates_presence_of :name, :username
   validates :username, uniqueness: true
   validates :name, uniqueness: true
-  validates :name, length: { minimum: 1 }
-  validates :username, length: { minimum: 1 }
 end
