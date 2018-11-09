@@ -50,7 +50,6 @@ class OwnersController < ApplicationController
       session[:owner_id] = owner.id
       redirect to '/books'
     else
-      binding.pry
       @errors =  owner.errors.full_messages.to_sentence
       erb :'/users/login'
     end

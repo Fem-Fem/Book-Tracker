@@ -52,7 +52,6 @@ class BooksController < ApplicationController
     @book.author = params[:book][:author]
     @book.genre = params[:book][:genre]
     @book.summary = params[:book][:summary]
-    binding.pry
     if @book.valid?
       @book.save
       redirect to "/books/#{@book.id}"
