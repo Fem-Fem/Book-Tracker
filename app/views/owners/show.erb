@@ -1,4 +1,4 @@
-<%if @owner.id == current_user.id%>
+<%if @owner.id == current_owner.id%>
   <h1><%= "Look at your books!"%></h1>
 <%else%>
   <h1><%= "Look at " + @owner.name + "'s books!"%></h1>
@@ -12,6 +12,9 @@
 
 <div class = "container">
   <h3><a href="/books/new">Add a book to your library!</a></h3>
-    <h3><a href="/books/index">See all of the books!</a></h3>
+  <h3><a href="/books">See all of the books!</a></h3>
+  <%if @owner.id != current_owner.id%>
+    <h3><a href="/owners/<%=current_owner.id%>">See your library!</a></h3>
+  <% end%>
   <h3><a href = "/logout">Logout</a></h3>
 </div>

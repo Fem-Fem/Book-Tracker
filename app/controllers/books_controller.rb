@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   end
 
   post '/books' do
-    @book = current_user.books.build(params[:book])
+    @book = current_owner.books.build(params[:book])
     if @book.save
       redirect '/books'
     else
@@ -33,7 +33,7 @@ class BooksController < ApplicationController
     redirect_to_login_or_signup_if_not_logged_in
     genres
     @book = Book.find(params[:id])
-    if current_user.id != @book.owner_id
+    if current_owner.id != @book.owner_id
       redirect '/books'
     else
       erb :'/books/edit'
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
   get '/books/:id/delete' do
     redirect_to_login_or_signup_if_not_logged_in
     @book = Book.find(params[:id])
-    if current_user.id == @book.owner_id
+    if current_owner.id == @book.owner_id
       @book.destroy
       redirect to '/books'
     else

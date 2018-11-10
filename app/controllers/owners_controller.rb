@@ -26,7 +26,7 @@ class OwnersController < ApplicationController
   end
 
   get '/signup' do
-    erb :'/users/signup'
+    erb :'/owners/signup'
   end
 
   post '/signup' do
@@ -36,12 +36,12 @@ class OwnersController < ApplicationController
       redirect to '/books'
     else
       @errors = @owner.errors.full_messages.to_sentence
-      erb :'/users/signup'
+      erb :'/owners/signup'
     end
   end
 
   get '/login' do
-    erb :'/users/login'
+    erb :'/owners/login'
   end
 
   post '/login' do
@@ -52,7 +52,7 @@ class OwnersController < ApplicationController
       redirect to '/books'
     else
       @errors =  "Invalid combination!"
-      erb :'/users/login'
+      erb :'/owners/login'
     end
   end
 

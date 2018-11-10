@@ -11,7 +11,8 @@
   <input type="text" name="book[author]" id="book_author" value="<%= @book.author%>">
   <br></br>
   <label>Genre:</label>
-  <select id='genre_list' type="text" name='book[genre]' id="book_genre" value="<%=@book.genre%>">
+  <%= binding.pry %>
+  <select id='genre_list' type="text" name='book[genre]' value="<%= @book.genre%>">
   <% @genres.each do |genre| %>
     <option type="text" name='book[genre]' id="book_genre"> <%= genre %>
   <% end %>

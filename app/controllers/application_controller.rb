@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
 
-    def current_user
+    def current_owner
       if session[:owner_id]
         return Owner.find(session[:owner_id])
       else
@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
 
     def redirect_to_login_or_signup_if_not_logged_in
       if !is_logged_in?
-        redirect to '/users/error'
+        redirect to '/owners/error'
       end
     end
 

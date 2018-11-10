@@ -15,7 +15,7 @@
 
 
     <h3>
-      <% if current_user.id == @book.owner_id %>
+      <% if current_owner.id == @book.owner_id %>
         <a href = '/books/<%=@book.id%>/delete'>Delete This Book</a>
         <br></br>
         <a href = "/books/<%=@book.id%>/edit">Edit This Book</a>
@@ -23,13 +23,13 @@
     </h3>
 
     <h3>
-      <% if current_user.id != @book.owner_id %>
+      <% if current_owner.id != @book.owner_id %>
         <a href = "/owners/<%=@book.owner_id%>">View More Books by this Person!</a>
       <% end %>
     </h3>
 
     <div class = "container">
-      <h3><a href="/owners/<%=current_user.id%>">Go to your library!</a></h3>
+      <h3><a href="/owners/<%=current_owner.id%>">Go to your library!</a></h3>
       <h3><a href="/books/new">Add a book to your library!</a></h3>
       <h3><a href = "/logout">Logout</a></h3>
     </div>
