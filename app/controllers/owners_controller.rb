@@ -4,7 +4,7 @@ class OwnersController < ApplicationController
     erb :'/account'
   end
 
-  get '/owners/error' do
+  get '/error' do
     erb :'owners/error'
   end
 
