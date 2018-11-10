@@ -46,7 +46,6 @@ class OwnersController < ApplicationController
 
   post '/login' do
     owner = Owner.find_by(:username => params[:username])
-    binding.pry
     if owner && owner.authenticate(params[:password])
       session[:owner_id] = owner.id
       redirect to '/books'
